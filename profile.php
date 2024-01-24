@@ -1,7 +1,6 @@
 <?php
 	require_once 'commonfiles/header.php';
   $user_id = $_SESSION['user_id'];
-  print_r($user_id);
 	$getUserDetailsQuery = selectFromDB(["education","address","skills","profile_img","role","gender","contact"],'user_details',["user_id"=>$user_id]);
 	$userDetails = getDateFromDb($getUserDetailsQuery);
 			
@@ -216,7 +215,7 @@
                     </div>
                         </div>
 					<div class="col-sm-5">
-						<img class="img img-responsive" src="<?php 
+						<img class="img img-responsive" width=" 250px" height=" 250px" src="<?php 
                          echo (isset($userDetails['profile_img']))? $userDetails['profile_img']: '/assets/profile_img/profileimg.png' ?>" alt="profile img">
                         </div>
                       </div>
