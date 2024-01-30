@@ -156,18 +156,18 @@
                       <div class="form-group row">
                         <label for="fname" class="col-sm-2 col-form-label">First Name</label>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control" name= "fname" id="fname" placeholder="First Name">
+                          <input type="text" class="form-control" name= "fname" id="fname" placeholder="First Name" value="<?php echo (isset($userData['name']))? $userData['name']: '';?>">
                         </div>
 						
 						<label for="lname" class="col-sm-2 col-form-label">Last Name</label>
 						<div class="col-sm-4">
-                          <input type="text" class="form-control" name= "lname" id="lname" placeholder=" Last Name">
+                          <input type="text" class="form-control" name= "lname" id="lname" placeholder=" Last Name"value="<?php echo (isset($userData['lastname']))? $userData['lastname']: '';?>">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email">
+                          <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email" value="<?php echo (isset($userData['email']))? $userData['email']: '';?>">
                         </div>
                       </div>
 					  <div class="form-group row">
@@ -186,19 +186,19 @@
                       <div class="form-group row">
                         <label for="inputExperience" class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-10">
-                          <textarea class="form-control" name="address" id="inputExperience" placeholder="Address"></textarea>
+                          <textarea class="form-control" name="address" id="inputExperience" placeholder="Address"><?php echo (isset($userDetails['address']))? $userDetails['address']: '';?></textarea>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputExperience" class="col-sm-2 col-form-label">Education</label>
                         <div class="col-sm-10">
-                          <textarea class="form-control" name="education" id="inputExperience" placeholder="Education"></textarea>
+                          <textarea class="form-control" name="education" id="inputExperience" placeholder="Education"><?php echo (isset($userDetails['education']))? $userDetails['education']: '';?></textarea>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
                         <div class="col-sm-10">
-                          <textarea name="skills" class="form-control" id="inputExperience" placeholder="skills"></textarea>
+                          <textarea name="skills" class="form-control" id="inputExperience" placeholder="skills"><?php echo (isset($userDetails['skills']))? $userDetails['skills']: '';?></textarea>
                         </div>
                       </div>
                       <div class="form-group row">

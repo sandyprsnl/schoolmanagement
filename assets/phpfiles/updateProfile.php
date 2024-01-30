@@ -57,13 +57,14 @@ if(isset($_POST['updateprofile'])){
 	 if($checkUserData){
 		 updateInDB($details,'user_details',['user_id'=>$user_id]);
 	 }
-	 else{		 
+	 else{	 
 		$details['user_id']=$user_id;
       makeInsertQuery($details,'user_details');
 	 }
+	 
 	 $user='';
 	 $details='';
-	header('location:profile.php');
+	redirect($_SERVER['REQUEST_URI']);	 
 	}
 
 }
