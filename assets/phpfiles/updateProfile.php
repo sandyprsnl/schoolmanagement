@@ -28,7 +28,7 @@ if(isset($_POST['updateprofile'])){
 			$details['skills'] = $_POST['skills'];
 	}
 
-	if(isset($_FILES['profileimg'])){
+	if(isset($_FILES['profileimg']) && ($_FILES['profileimg']['error']===0)){
 		$image=$_FILES['profileimg'];
 		if(!in_array($image['type'],$uplodeType)){
 			echo '<script>alert("Sorry, only JPG, JPEG & PNG  files are allowed")</script>';

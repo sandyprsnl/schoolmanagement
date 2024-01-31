@@ -83,21 +83,21 @@
 
                 <p class="text-muted">
                  <?php 
-				 echo (isset($userDetails['gender']))? $userDetails['gender']: 'Not choose';
+				 echo (isset($userDetails['gender']))? ucfirst($userDetails['gender']): 'Not choose';
 				?>
                 </p>
 			  <strong><i class="fas fa-book mr-1"></i> Class</strong>
 
                 <p class="text-muted">
                  <?php 
-				 echo (isset($userSchoolDetails['class']))? $userSchoolDetails['class']: 'Not assign';
+				 echo (isset($userSchoolDetails['class']))?ucfirst( $userSchoolDetails['class']): 'Not assign';
 				?>
                 </p>
 				<hr>
 				<strong><i class="fas fa-book mr-1"></i> Subjects</strong>
 				<p class="text-muted">
                    <?php 
-				 echo (isset($userSchoolDetails['subjects']))? $userSchoolDetails['subjects']: 'Not assign';
+				 echo (isset($userSchoolDetails['subjects']))? ucfirst($userSchoolDetails['subjects']): 'Not assign';
 				?>
                 </p>
 				<hr>
@@ -105,7 +105,7 @@
 
                 <p class="text-muted">
                    <?php 
-				 echo (isset($userDetails['education']))? $userDetails['education']: 'Not choose';
+				 echo (isset($userDetails['education']))? ucfirst($userDetails['education']): 'Not Assign';
 				?>
                 </p>
 
@@ -174,11 +174,11 @@
                         <label for="inputName2"  class="col-sm-2 col-form-label">Gender</label>
                         <div class="col-sm-10">
                          <div class="form-group">
-						  <select class="form-control select2" name="gender" style="width: 100%;">
-							<option selected="selected">Select Gender</option>
-							<option value="male">Male</option>
-							<option value="female">female</option>
-							<option value="other">Other</option>
+						  <select class="form-control select2" name="gender" style="width: 100%;">						
+							<option  value=''<?php if(!isset($userDetails['gender'])){echo 'selected';}?> >Select Gender</option>
+							<option value="male" <?php if($userDetails['gender']=='male'){echo 'selected';}?>>Male</option>
+							<option value="female" <?php if($userDetails['gender']=='female'){echo 'selected';}?>>Female</option>
+							<option value="other"<?php if($userDetails['gender']=='other'){echo 'selected';}?>>Other</option>
 						  </select>
 						</div>
                         </div>
