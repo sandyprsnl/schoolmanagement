@@ -1,5 +1,9 @@
 <?php session_start();
  require_once 'functions.php';
+   $user_id = $_SESSION['user_id'];
+	$getUserDetailsQuery = selectFromDB(["education","address","skills","profile_img","role","gender","contact"],'user_details',["user_id"=>$user_id]);
+	$userDetails = getDateFromDb($getUserDetailsQuery);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
