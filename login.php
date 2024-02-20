@@ -17,7 +17,7 @@ if(isset($_SESSION['loginEmail']) || !empty($_SESSION['loginEmail'])){
 			$error['password']="please fill Password";
 		}
 		else{
-			$loginSQLQuery = "SELECT `email`,`id`,`isActive` FROM `users` WHERE `email`='$email' AND `password`=$password";
+			$loginSQLQuery = "SELECT `email`,`id`,`isActive` FROM `users` WHERE `email`='$email' AND `password`='$password'";
 			$loginSQLResult = mysqli_query($conn,$loginSQLQuery);
 			if(mysqli_num_rows($loginSQLResult)>0){				
 				$sqlDataArray = mysqli_fetch_assoc($loginSQLResult);
