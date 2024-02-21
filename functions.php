@@ -16,10 +16,10 @@ function selectFromDB($columns=[],$table='',$whereColumns=[],$condition='OR',$or
 		$columns = implode('`, `',$columns);
 	}
 	else{
-		$columns =" *";
+		$columns ="*";
 	}
-	
-	$sql = "SELECT `".$columns."` FROM `".$table."` ";
+	$DBcolumns= ($columns=="*")?$columns:"`".$columns."`";
+	$sql = "SELECT ".$DBcolumns." FROM `".$table."` ";
 	
 	if(is_array($whereColumns) &&!empty($whereColumns)){
 		$i=0;

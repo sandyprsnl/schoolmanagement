@@ -1,8 +1,7 @@
 <?php
 	require_once 'commonfiles/header.php';
 			
-	$getUserSchoolDetailsQuery = selectFromDB([ "class_id","subject_ids","teacher_id","roll_no","role_id"],'school_details',["user_id"=>$user_id]);
-   $userSchoolDetails= getDateFromDb($getUserSchoolDetailsQuery);
+
   ?>
   <!-- Navbar -->
 	<?php require_once "commonfiles/topnavbar.php"?>
@@ -57,9 +56,9 @@
                 <p class="text-muted text-center"><?php 
 				 echo (isset($userDetails['role']))? $userDetails['role']: 'No Roll Assign Yet';
 				?></p>
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-lg">
+				<a  class="btn btn-success" href="/updateProfile.php?userid=<?php echo $user_id ?>">
                   Update Profile
-                </button>
+                </a>
               </div>
               <!-- /.card-body -->
             </div>
@@ -137,100 +136,6 @@
   </div>
   <!-- /.content-wrapper -->
   <!--- profile update modal---->
-  
-<?php require_once "assets/phpfiles/updateProfile.php"?>
-  <div class="modal fade" id="modal-lg" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-           <form class="form-horizontal" method="post" enctype="multipart/form-data">
-            <div class="modal-header">
-              <h4 class="modal-title">Update Profile</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                      <div class="form-group row">
-                        <label for="fname" class="col-sm-2 col-form-label">First Name</label>
-                        <div class="col-sm-4">
-                          <input type="text" class="form-control" name= "fname" id="fname" placeholder="First Name" value="<?php echo (isset($userData['name']))? $userData['name']: '';?>">
-                        </div>
-						
-						<label for="lname" class="col-sm-2 col-form-label">Last Name</label>
-						<div class="col-sm-4">
-                          <input type="text" class="form-control" name= "lname" id="lname" placeholder=" Last Name"value="<?php echo (isset($userData['lastname']))? $userData['lastname']: '';?>">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email" value="<?php echo (isset($userData['email']))? $userData['email']: '';?>">
-                        </div>
-                      </div>
-					  <div class="form-group row">
-                        <label for="inputName2"  class="col-sm-2 col-form-label">Gender</label>
-                        <div class="col-sm-10">
-                         <div class="form-group">
-						  <select class="form-control select2" name="gender" style="width: 100%;">						
-							<option  value=''<?php if(!isset($userDetails['gender'])){echo 'selected';}?> >Select Gender</option>
-							<option value="male" <?php if($userDetails['gender']=='male'){echo 'selected';}?>>Male</option>
-							<option value="female" <?php if($userDetails['gender']=='female'){echo 'selected';}?>>Female</option>
-							<option value="other"<?php if($userDetails['gender']=='other'){echo 'selected';}?>>Other</option>
-						  </select>
-						</div>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputExperience" class="col-sm-2 col-form-label">Address</label>
-                        <div class="col-sm-10">
-                          <textarea class="form-control" name="address" id="inputExperience" placeholder="Address"><?php echo (isset($userDetails['address']))? $userDetails['address']: '';?></textarea>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputExperience" class="col-sm-2 col-form-label">Education</label>
-                        <div class="col-sm-10">
-                          <textarea class="form-control" name="education" id="inputExperience" placeholder="Education"><?php echo (isset($userDetails['education']))? $userDetails['education']: '';?></textarea>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                        <div class="col-sm-10">
-                          <textarea name="skills" class="form-control" id="inputExperience" placeholder="skills"><?php echo (isset($userDetails['skills']))? $userDetails['skills']: '';?></textarea>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Profile Image</label>
-                        <div class="col-sm-5">
-                          <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" name="profileimg" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                        </div>
-					<div class="col-sm-5">
-						<img class="img img-responsive" width=" 250px" height=" 250px" src="<?php 
-                         echo (isset($userDetails['profile_img']))? $userDetails['profile_img']: '/assets/profile_img/profileimg.png' ?>" alt="profile img">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                      </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" name="updateprofile" class="btn btn-primary">Save changes</button>
-            </div>
-			
-           </form>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-	  <!--- profile update modal end---->  
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0
@@ -250,14 +155,3 @@
 	require_once 'commonfiles/footer.php';
 ?>
 
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-  })
-</script>

@@ -38,9 +38,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+			  <?php 
+				$allUsersQuery = selectFromDB("" ,'users');
+				$allUsersResult= mysqli_query(DB_CONN,$allUsersQuery);
+				$userCount = (mysqli_num_rows($allUsersResult)>0)? mysqli_num_rows($allUsersResult):0;
+			  ?>
+                <h3><?php echo $userCount;?></h3>
 
-                <p>New Orders</p>
+                <p>Total Users</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>

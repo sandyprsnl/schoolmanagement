@@ -6,6 +6,8 @@
    $user_id = $_SESSION['user_id'];
 	$getUserDetailsQuery = selectFromDB(["education","address","skills","profile_img","role","gender","contact"],'user_details',["user_id"=>$user_id]);
 	$userDetails = getDateFromDb($getUserDetailsQuery);
+		$getUserSchoolDetailsQuery = selectFromDB([ "class_id","subject_ids","teacher_id","roll_no","role_id"],'school_details',["user_id"=>$user_id]);
+   $userSchoolDetails= getDateFromDb($getUserSchoolDetailsQuery);
 
 ?>
 <!DOCTYPE html>
